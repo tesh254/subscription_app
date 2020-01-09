@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SiteController@showHome');
+
+Route::get('{slug}', 'SiteController@showPost');

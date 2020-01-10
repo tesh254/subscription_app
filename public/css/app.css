@@ -1,5 +1,50 @@
 @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+.card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 1px 3px rgba(255, 221, 87, 0.3);
+}
+
+.card .image-container {
+  display: block;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  min-height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card .card-content .price {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.post-single {
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  margin: 15px;
+}
+
+.post-header .byline {
+  color: #ffdd57;
+}
+
+.has-image-centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.has-image-centered img {
+  width: auto !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 :root {
   --primary-font: "Luckiest Guy", cursive;
   --secondary-font: "Roboto", san-serif;
@@ -14,6 +59,16 @@
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSUdGQ4-Q3WN9sENB8l5S3MsmIjQcdLi1pvJ_DQSvRxCod7ByM3");
   background-size: contain;
   height: auto;
+}
+
+.post-content {
+  padding: 1em 2.2rem 1em 2.2rem !important;
+}
+
+.post-content .latest {
+  border-top: 2px solid #ffdd57;
+  border-bottom: 2px solid #ffdd57;
+  width: 250px;
 }
 
 /*# sourceMappingURL=app.css.map */

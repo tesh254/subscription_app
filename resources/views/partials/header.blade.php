@@ -47,12 +47,18 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
+            @if (Auth::user())
+              <a href="/logout" class="button is-black">
+                <strong>Logout</strong>
+              </a>
+            @else
+              <a href="/register" class="button is-black">
+                <strong>Sign up</strong>
+              </a>
+              <a href="/login" class="button is-light">
+                Log in
+              </a>
+            @endif
           </div>
         </div>
       </div>

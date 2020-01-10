@@ -61,6 +61,15 @@
   height: auto;
 }
 
+.forms {
+  margin: 25px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
 .post-content {
   padding: 1em 2.2rem 1em 2.2rem !important;
 }

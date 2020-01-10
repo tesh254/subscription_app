@@ -11,6 +11,12 @@
 |
 */
 
+// Site routes
 Route::get('/', 'SiteController@showHome');
 
+// Authentication routes
+Route::auth();
+Route::get('logout', 'Auth\LoginController@logout');
+
+// Site routes
 Route::get('{slug}', 'SiteController@showPost');

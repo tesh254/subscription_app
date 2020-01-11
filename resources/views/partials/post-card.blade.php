@@ -8,7 +8,7 @@
         {{-- title --}}
     <h2 class="header-title title is-5"><a href="/{{$post->slug}}">{{$post->title}}</a></h2>
         {{-- byline --}}
-        <div class="byline">{{$post->author->name}}</div>
+        <div class="byline header-title">{{$post->author->name}}</div>
 
         {{-- excerpt --}}
         <p>{{$post->getExcerpt()}}</p>

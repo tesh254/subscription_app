@@ -45,6 +45,35 @@
   margin-right: auto;
 }
 
+.subscription-option {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subscription-option input[type=radio] {
+  display: none;
+}
+
+.subscription-option label {
+  display: block;
+  width: 300px;
+  min-height: 200px;
+  border-radius: 15px;
+  background: #f2f2f2;
+  color: #545454;
+  font-size: 40px;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 50px;
+  margin: 1.4em;
+  transition: 0.3s ease all;
+}
+
+.subscription-option input[type=radio]:checked + label {
+  background: #ffdd57;
+  color: white;
+}
+
 :root {
   --primary-font: "Luckiest Guy", cursive;
   --secondary-font: "Roboto", san-serif;

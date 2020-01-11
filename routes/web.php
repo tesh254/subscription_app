@@ -18,5 +18,9 @@ Route::get('/', 'SiteController@showHome');
 Route::auth();
 Route::get('logout', 'Auth\LoginController@logout');
 
+// Subscription form
+Route::get('subscribe', 'SubscribeController@showSubscribe');
+Route::post('subscribe', 'SubscribeController@processSubscribe');
+
 // Site routes
 Route::get('{slug}', 'SiteController@showPost');

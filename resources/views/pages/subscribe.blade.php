@@ -3,8 +3,16 @@
 @section('content')
 
 <div class="flex-center forms">
-    <form action="/subscribe" method="POST">
+    <form action="/subscribe" method="POST" id="subscribe-form">
+        {!! csrf_field() !!}
         <h2 class="header-title title is-2">Subscribe</h2>
+        @if (count($errors) > 0)
+        <div class="notification is-danger is-light">
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>                
+            @endforeach
+        </div>
+        @endif
         {{-- only show then logged in --}}
             @if (Auth::guest())
             {{-- user info --}}
@@ -80,6 +88,7 @@
 
             {{-- credit card info --}}
             <h3 class="header-title title is-3">Credit Card Info</h3>
+            <div class="stripe-errors" style="margin: 15px;"></div>
             
             {{-- credit card number --}}
             <div class="field">
@@ -87,7 +96,7 @@
                     <label class="title is-4 header-title" for="credit-card-number">
                         Credit Card Number
                     </label>
-                    <input type="text" class="input" placeholder="4242 4242 4242 4242" />
+                    <input type="text" class="input" placeholder="4242 4242 4242 4242" data-stripe="number" />
                 </p>
             </div>
             {{-- cvc --}}
@@ -96,7 +105,7 @@
                     <label for="cvc" class="title is-4 header-title">
                         CVC
                     </label>
-                    <input type="text" class="input" placeholder="123">
+                    <input type="text" class="input" placeholder="123" data-stripe="cvc">
                 </p>
             </div>
 
@@ -106,14 +115,14 @@
                     <div class="field">
                         <p class="control is-expanded">
                             <label for="" class="header-title title is-4">Expiry Month</label>
-                            <input type="text" class="input" placeholder="01">
+                            <input type="text" class="input" placeholder="01" data-stripe="exp-month">
                         </p>
                     </div>
                     {{-- exp year --}}
                     <div class="field">
                         <p class="control is-expanded">
                             <label for="" class="header-title title is-4">Expiry Year</label>
-                            <input type="text" placeholder="2020" class="input">
+                            <input type="text" placeholder="2023" class="input" data-stripe="exp-year">
                         </p>
                     </div>
                 </div>

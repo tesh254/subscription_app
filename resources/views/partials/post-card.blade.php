@@ -1,20 +1,26 @@
 <article class="post-card card">
-    {{-- Image --}}
-    <a href="/{{ $post->slug }}" class="image-container"
-        style="background-image: url('{{$post->image}}')"></a>
+    
+    {{-- image --}}
+    <a href="/{{ $post->slug }}" class="img-container"
+        style="background-image:url('{{ $post->image }}')"></a>
 
-    {{-- Content --}}
+    {{-- content --}}
     <div class="card-content">
+
         {{-- title --}}
-    <h2 class="header-title title is-5"><a href="/{{$post->slug}}">{{$post->title}}</a></h2>
+        <h2><a href="/{{ $post->slug }}">{{ $post->title }}</a></h2>
+
         {{-- byline --}}
-        <div class="byline header-title">{{$post->author->name}}</div>
+        <div class="byline">{{ $post->author->name }}</div>
 
         {{-- excerpt --}}
-        <p>{{$post->getExcerpt()}}</p>
+        <p>{{ $post->getExcerpt() }}</p>
+
         {{-- free or premium? --}}
-        <span class="price tag is-light {{$post->premium ? 'is-success' : 'is-warning'}}">
-            {{$post->premium ? 'Premium' : 'Free'}}
+        <span class="price
+            {{ $post->premium ? 'price-premium' : 'price-free' }}">
+            {{ $post->premium ? 'Premium' : 'Free' }}
         </span>
+
     </div>
 </article>

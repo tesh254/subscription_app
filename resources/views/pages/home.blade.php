@@ -2,44 +2,34 @@
 
 @section('content')
 
-<section class="hero is-medium is-primary is-light is-bold">
-  <div class="hero-body hero-bg">
-    <div class="container">
-      <h1 class="title is-1 header-title">
-        Daily dose of Fashion News Fast!! ⚡️
-      </h1>
-      <h1 class="title is-1 header-title">
-          Only $15/month 
-        </h1>
-      <h2 class="subtitle header-title">
-        We promise you wont regret it
-          <br/><br/>
-      <a href="/subscribe" class="button is-large is-warning is-light">
-          Subscribe
-      </a>
-      </h2>
+<div class="hero">
+    <div class="hero-content">
+        <h1>Daily Dose of Cute Animals!</h1>
+        <h2>Only $10/mo</h2>
+        <div class="cta">
+            <p>We promise you won't regret it.</p>
+            <a href="/subscribe" class="btn btn-danger btn-lg">Subscribe</a>
+        </div>
     </div>
-  </div>
-</section>
-<br>
-<section class="post-content">
-  <section class="content has-text-centered">
-    <p class="latest header-title title is-2">
-      Latest News
-    </p>
-  </section>
-  {{-- Post section --}}
+</div>
 
-  <section class="columns is-mobile is-multiline">
+<section>
+    <div class="container">
+        <div class="section-header">
+            <h2>Latest Animals</h2>
+        </div>
 
-    @foreach ($posts as $post)
-      <section class="column is-full-mobile is-one-quarter-tablet
-      is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
-        @include('partials.post-card', ['post' => $post])
-    </section>
-    @endforeach
+        {{-- POSTS WILL GO HERE --}}
+        <div class="row">
 
-  </section>
+            @foreach ($posts as $post)
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    @include('partials.post-card', ['post' => $post])
+                </div>
+            @endforeach
+
+        </div>
+    </div>
 </section>
 
 @endsection

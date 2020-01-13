@@ -1,37 +1,22 @@
-<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item header-title" href="/">
-        fnista
-      </a>
-  
-      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-  
-    <div id="navbarBasicExample" class="navbar-menu">  
-      <div class="navbar-end">
-        <a href="/subscribe" class="navbar-item">
-          Subscribe
-        </a>
-        <div class="navbar-item">
-          <div class="buttons">
-            @if (Auth::user())
-              <a href="/logout" class="button is-black">
-                <strong>Logout</strong>
-              </a>
-            @else
-              <a href="/register" class="button is-black">
-                <strong>Sign up</strong>
-              </a>
-              <a href="/login" class="button is-light">
-                Log in
-              </a>
-            @endif
-          </div>
+<div class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">Animalgram</a>
         </div>
-      </div>
+
+        <ul class="nav navbar-nav navbar-right">
+
+            @if ( ! (Auth::user() and Auth::user()->subscribed('main')))
+            <li><a href="/subscribe">Subscribe</a></li>   
+            @endif
+
+            @if (Auth::user())
+                <li><a href="/account">{{ Auth::user()->name }}</a></li>
+                <li><a href="/logout">Logout</a></li>
+            @else
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            @endif
+        </ul>
     </div>
-  </nav>
+</div>

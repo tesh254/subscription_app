@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    
     protected $fillable = [
         'user_id',
         'title',
@@ -22,4 +23,5 @@ class Post extends Model
     public function getExcerpt() {
         return str_limit($this->content, 40);
     }
+
 }

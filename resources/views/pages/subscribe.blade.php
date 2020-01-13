@@ -2,140 +2,137 @@
 
 @section('content')
 
-<div class="flex-center forms">
+<div class="hero">
+    <div class="hero-content">
+        <h1>You're Joining!</h1>
+        <h2>Hooray!</h2>
+    </div>
+</div>
+
+<section class="container">
+    <div class="card card-padded">
+        
     <form action="/subscribe" method="POST" id="subscribe-form">
+
         {!! csrf_field() !!}
-        <h2 class="header-title title is-2">Subscribe</h2>
+
+        @if (Auth::guest())
+        {{-- only show if not logged in --}}
+        {{-- user info --}}
+        <div class="section-header">
+            <h2>User Info</h2>
+        </div>
+
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email">
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+        @endif
+
+        {{-- subscription info --}}
+        <div class="section-header">
+            <h2>Subscription Info</h2>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-4">
+                    
+                    <div class="subscription-option">
+                        <input type="radio" id="plan-bronze" name="plan" value="bronze" checked>
+                        <label for="plan-bronze">
+                            <span class="plan-price">$5 <small>/mo</small></span>
+                            <span class="plan-name">Bronze</span>
+                        </label>
+                    </div>
+
+                </div>
+                <div class="col-xs-4">
+                    
+                    <div class="subscription-option">
+                        <input type="radio" id="plan-silver" name="plan" value="silver">
+                        <label for="plan-silver">
+                            <span class="plan-price">$10 <small>/mo</small></span>
+                            <span class="plan-name">Silver</span>
+                        </label>
+                    </div>
+
+                </div>
+                <div class="col-xs-4">
+                    
+                    <div class="subscription-option">
+                        <input type="radio" id="plan-gold" name="plan" value="gold">
+                        <label for="plan-gold">
+                            <span class="plan-price">$15 <small>/mo</small></span>
+                            <span class="plan-name">Gold</span>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {{-- credit card info --}}
+        <div class="section-header">
+            <h2>Credit Card Info</h2>
+        </div>
+        
+        <div class="form-group row">
+            {{-- credit card number --}}
+            <div class="col-xs-8">
+                <label>Credit Card Number</label>
+                <input type="text" class="form-control" placeholder="4242 4242 4242 4242" data-stripe="number">
+            </div>
+
+            {{-- cvc --}}
+            <div class="col-xs-4">
+                <label>CVC</label>
+                <input type="text" class="form-control" placeholder="123" data-stripe="cvc">
+            </div>
+        </div>
+
+        <div class="form-group row">
+
+            {{-- exp month --}}
+            <div class="col-xs-3">
+                <label>Expiration Month</label>
+                <input type="text" class="form-control" placeholder="08" data-stripe="exp-month">
+            </div>
+
+            {{-- exp year --}}
+            <div class="col-xs-3">
+                <label>Expiration Year</label>
+                <input type="text" class="form-control" placeholder="2020" data-stripe="exp-year">
+            </div>
+        </div>        
+
+        <div class="stripe-errors"></div>
+
         @if (count($errors) > 0)
-        <div class="notification is-danger is-light">
+        <div class="alert alert-danger">
             @foreach ($errors->all() as $error)
-                {{ $error }}<br>                
+                {{ $error }}<br>
             @endforeach
         </div>
         @endif
-        {{-- only show then logged in --}}
-            @if (Auth::guest())
-            {{-- user info --}}
-            <h3 class="header-title title is-3">User Info</h3>
-            
-            <div class="field">
-                <p class="control">
-                    <label for="Name" class="title is-4 header-title">Name</label>
-                    <input class="input" name="name" type="text" placeholder="Name"/>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <label for="Email" class="title is-4 header-title">Email</label>
-                    <input class="input" type="email" name="email" placeholder="Email">
-                </p>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <label for="Password" class="title is-4 header-title">Password</label>
-                    <input class="input" type="password" name="password" placeholder="Password">
-                </p>
-            </div>
-            @endif
 
-            {{-- subscription form --}}
-            <h3 class="header-title title is-3">Subscription Info</h3>
-            <div class="columns is-mobile is-multiline">
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-lg btn-success btn-block">Join</button>
+        </div>
 
-                <section class="column is-full-mobile is-one-quarter-tablet
-                is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
-                    <div class="subscription-option">
-                        <input id="plan-bronze" type="radio" name="plan" value="bronze" checked>
-                        <label for="plan-bronze">
-                            <span class="plan-price header-title">
-                                $5 <small>/mo</small>
-                            </span>
-                            <br>
-                            <span class="plan-name header-title">Bronze</span>
-                        </label>
-                    </div>
-                </section>
-
-                <section class="column is-full-mobile is-one-quarter-tablet
-                is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
-                    <div class="subscription-option">
-                        <input id="plan-silver" type="radio" name="plan" value="silver">
-                        <label for="plan-silver">
-                            <span class="plan-price header-title">
-                                $10 <small>/mo</small>
-                            </span>
-                            <br>
-                            <span class="plan-name header-title">Silver</span>
-                        </label>
-                    </div>
-                </section>
-
-                <section class="column is-full-mobile is-one-quarter-tablet
-                is-one-quarter-desktop is-one-quarter-widescreen is-one-quarter-fullhd">
-                    <div class="subscription-option">
-                        <input id="plan-gold" type="radio" name="plan" value="gold">
-                        <label for="plan-gold">
-                            <span class="plan-price header-title">
-                                $15 <small>/mo</small>
-                            </span>
-                            <br>
-                            <span class="plan-name header-title">Gold</span>
-                        </label>
-                    </div>
-                </section>
-            </div>
-            
-
-            {{-- credit card info --}}
-            <h3 class="header-title title is-3">Credit Card Info</h3>
-            <div class="stripe-errors" style="margin: 15px;"></div>
-            
-            {{-- credit card number --}}
-            <div class="field">
-                <p class="control">
-                    <label class="title is-4 header-title" for="credit-card-number">
-                        Credit Card Number
-                    </label>
-                    <input type="text" class="input" placeholder="4242 4242 4242 4242" data-stripe="number" />
-                </p>
-            </div>
-            {{-- cvc --}}
-            <div class="field">
-                <p class="control">
-                    <label for="cvc" class="title is-4 header-title">
-                        CVC
-                    </label>
-                    <input type="text" class="input" placeholder="123" data-stripe="cvc">
-                </p>
-            </div>
-
-            <div class="is-fullwidth">
-                <div class="field-body">
-                    {{-- exp month --}}
-                    <div class="field">
-                        <p class="control is-expanded">
-                            <label for="" class="header-title title is-4">Expiry Month</label>
-                            <input type="text" class="input" placeholder="01" data-stripe="exp-month">
-                        </p>
-                    </div>
-                    {{-- exp year --}}
-                    <div class="field">
-                        <p class="control is-expanded">
-                            <label for="" class="header-title title is-4">Expiry Year</label>
-                            <input type="text" placeholder="2023" class="input" data-stripe="exp-year">
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="field">
-                <p class="control">
-                    <button class="button is-fullwidth is-warning header-title" type="submit">
-                        Subscribe
-                    </button>
-                </p>
-            </div>
     </form>
-</div>
+
+    </div>
+</section>
 
 @endsection

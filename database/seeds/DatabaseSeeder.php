@@ -1,11 +1,12 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
@@ -17,13 +18,13 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->delete();
         DB::table('posts')->delete();
 
-        // Seed posts
+        // seed posts
         factory(App\Post::class, 8)->create();
 
-        // create a user we can login with 
-        App\User::create([
-            'name' => 'Erick Wachira',
-            'email' => 'ewachira254@gmail.com',
+        // create a user we can login with
+        User::create([
+            'name'     => 'Erick Wachira',
+            'email'    => 'ewachira254@gmail.com',
             'password' => bcrypt('password')
         ]);
     }

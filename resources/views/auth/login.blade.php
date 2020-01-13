@@ -2,41 +2,34 @@
 
 @section('content')
 
-<div class="container">
-<div class="row">
-<div class="col-sm-6 col-sm-offset-3">
+<section class="flex-center forms">
+    <form method="POST" action="/login">
+        {!! csrf_field() !!}
 
-    <div class="card auth-card">
-
-        <h1>Login</h1>
-
-        <form method="POST" action="/login">
-
-            {!! csrf_field() !!}
-
-            {{-- email --}}
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control">
-            </div> 
-
-            {{-- password --}}
-            <div class="form-group">
-                <label>Password</label> 
-                <input type="password" name="password" class="form-control">
-            </div> 
-
-            {{-- login button --}}
-            <div class="form-group">
-                <button type="submit" class="btn btn-success btn-lg btn-block">
-                    Login
-                </button> 
-            </div> 
-        </form>
-    </div>
-
-</div>
-</div>
-</div>
+        <h2 class="header-title title is-2">Log In</h2>
+        <div class="field">
+            <p class="control">
+                <label for="Email" class="title is-4 header-title">Email</label>
+                <input class="input" name="email" type="email" placeholder="Email">
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+            </p>
+        </div>
+        <div class="field">
+            <p class="control">
+                <label for="Password" class="title is-4 header-title">Password</label>
+                <input class="input" name="password" type="password" placeholder="Password">
+            </p>
+        </div>
+        <div class="field">
+            <p class="control">
+                <button type="submit" class="button is-warning header-title">
+                    Log In
+                </button>
+            </p>
+        </div>
+    </form>
+</section>
 
 @endsection

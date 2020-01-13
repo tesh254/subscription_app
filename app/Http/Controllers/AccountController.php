@@ -74,7 +74,7 @@ class AccountController extends Controller
     public function downloadInvoice($invoiceId)
     {
         return Auth::user()->downloadInvoice($invoiceId, [
-            'vendor'  => 'Animalgram',
+            'vendor'  => 'Fnista',
             'product' => 'Monthly Subscription'
         ]);
     }

@@ -1,0 +1,57 @@
+@import "./module";
+
+.card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 1px 3px rgba($yellow, 0.3);
+
+    // Image container
+    .image-container {
+        display: block;
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        min-height: 200px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .card-content {
+        .price {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-top-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+    }
+}
+
+.post-single {
+    background: white;
+    box-shadow: 0 1px 3px rgba(black, 0.3);
+    margin: 15px;
+}
+
+.post-header {
+    .byline {
+        color: $yellow;
+    }
+}
+
+.has-image-centered {
+    // justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+        width: auto !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .post-content {
+    }
+}

@@ -2,53 +2,44 @@
 
 @section('content')
 
-<div class="container">
-<div class="row">
-<div class="col-sm-6 col-sm-offset-3">
+<section class="flex-center forms">
+    <form action="/register" method="POST">
+        {!! csrf_field() !!}
 
-    <div class="card auth-card">
+        <h2 class="header-title title is-2">Sign Up</h2>
 
-        <h1>Register</h1>
-
-        <form method="POST" action="/register">
-
-            {!! csrf_field() !!}
-
-            {{-- name --}}
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" name="name" class="form-control">
-            </div>
-
-            {{-- email --}}
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control">
-            </div> 
-
-            {{-- password --}}
-            <div class="form-group">
-                <label>Password</label> 
-                <input type="password" name="password" class="form-control">
-            </div> 
-
-            {{-- password --}}
-            <div class="form-group">
-                <label>Confirm Password</label> 
-                <input type="password" name="password_confirmation" class="form-control">
-            </div> 
-
-            {{-- register button --}}
-            <div class="form-group">
-                <button type="submit" class="btn btn-success btn-lg btn-block">
-                    Register
-                </button> 
-            </div> 
-        </form>
-    </div>
-
-</div>
-</div>
-</div>
+<div class="field">
+    <p class="control">
+        <label for="Name" class="title is-4 header-title">Name</label>
+      <input class="input" name="name" type="text" placeholder="Name"/>
+    </p>
+  </div>
+<div class="field">
+    <p class="control">
+        <label for="Email" class="title is-4 header-title">Email</label>
+      <input class="input" type="email" name="email" placeholder="Email">
+    </p>
+  </div>
+  <div class="field">
+    <p class="control">
+        <label for="Password" class="title is-4 header-title">Password</label>
+      <input class="input" type="password" name="password" placeholder="Password">
+    </p>
+  </div>
+  <div class="field">
+    <p class="control">
+        <label for="Confirm Password" class="title is-4 header-title">Confirm Password</label>
+      <input class="input" type="password" name="password_confirmation" placeholder="Confirm Password">
+    </p>
+  </div>
+  <div class="field">
+    <p class="control">
+      <button type="submit" class="button is-warning header-title">
+        Sign Up
+      </button>
+    </p>
+  </div>
+    </form>
+</section>
 
 @endsection

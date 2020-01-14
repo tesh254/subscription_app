@@ -13,14 +13,22 @@
   
     <div id="navbarBasicExample" class="navbar-menu">  
       <div class="navbar-end">
+        @if (! (Auth::user() and Auth::user()->subscribed('main')))
         <a href="/subscribe" class="navbar-item">
-          Subscribe
+          💳 Subscribe
         </a>
+        @else
+        <a href="#" class="navbar-item">
+          💯 Member
+        </a>
+        @endif
+
         <div class="navbar-item">
           <div class="buttons">
             @if (Auth::user())
-              <a href="/logout" class="button is-black">
-                <strong>Logout</strong>
+            <a href="/account" class="header-title">{{ Auth::user()->name }}  </a>
+              <a href="/logout" class="button is-black header-title">
+                <strong>  Logout</strong>
               </a>
             @else
               <a href="/register" class="button is-black">
